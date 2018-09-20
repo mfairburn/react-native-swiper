@@ -193,8 +193,12 @@ export default class extends Component {
   loopJumpTimer = null
 
   componentWillReceiveProps (nextProps) {
-    if (!nextProps.autoplay && this.autoplayTimer) clearTimeout(this.autoplayTimer)
-    this.setState(this.initState(nextProps, this.props.index !== nextProps.index))
+    if (nextProps.index === this.props.index) {
+      return
+    }
+    if (!nextProps.autoplay && this.autoplayTimer) clearTimeout(this.autoplayTimer) {
+      this.setState(this.initState(nextProps, this.props.index !== nextProps.index))
+    }
   }
 
   componentDidMount () {
